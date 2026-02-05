@@ -1,52 +1,51 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, TextField, Card, CardContent } from '@mui/material';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
+/* Pages */
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function About() {
+  return <h2>About Page</h2>;
+}
+
+function Contact() {
+  return <h2>Contact Page</h2>;
+}
+
+function Dashboard() {
+  return <h2>Dashboard</h2>;
+}
+
+function Profile() {
+  return <h2>Profile</h2>;
+}
+
+function NotFound() {
+  return <h2>Page Not Found</h2>;
+}
+
+/* App Component */
 function App() {
   return (
-    <>
-      {/* Navbar */}
-      <nav className="navbar navbar-dark bg-dark">
-        <span className="navbar-brand mb-0 h1">My App</span>
+    <BrowserRouter>
+      <nav style={{ marginBottom: "20px" }}>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/about">About</Link> |{" "}
+        <Link to="/contact">Contact</Link> |{" "}
+        <Link to="/dashboard">Dashboard</Link> |{" "}
+        <Link to="/profile">Profile</Link>
       </nav>
 
-      <div className="container mt-4">
-
-        {/* Bootstrap UI Demo */}
-        <h2 className="text-center">Bootstrap UI Demo</h2>
-
-        <div className="card p-3 mt-3">
-          <input className="form-control" placeholder="Enter name" />
-          <button className="btn btn-primary mt-3">Submit</button>
-        </div>
-
-        {/* Bootstrap Grid Cards */}
-        <div className="row mt-4">
-          <div className="col-md-4">
-            <div className="card p-3">Card 1</div>
-          </div>
-          <div className="col-md-4">
-            <div className="card p-3">Card 2</div>
-          </div>
-          <div className="col-md-4">
-            <div className="card p-3">Card 3</div>
-          </div>
-        </div>
-
-        {/* Material UI Form */}
-        <div className="mt-5 d-flex justify-content-center">
-          <Card style={{ width: 300 }}>
-            <CardContent>
-              <h3>Material UI Form</h3>
-              <TextField label="Name" fullWidth margin="normal" />
-              <Button variant="contained" fullWidth>
-                Submit
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
